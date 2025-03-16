@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2025-03-16T16:52:09.472740Z</date>
+  <millis>1742143929472</millis>
+  <nanos>740000</nanos>
+  <sequence>0</sequence>
+  <logger>Server</logger>
+  <level>INFO</level>
+  <class>org.labs.ServerApp</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Сервер начал работу.</message>
+</record>
+</log>
