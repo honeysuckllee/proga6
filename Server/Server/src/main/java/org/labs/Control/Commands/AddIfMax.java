@@ -98,19 +98,34 @@ public class AddIfMax implements Command {
             this.creationDate = LocalDate.parse(additional.get(index++), formatter);
 
             // Парсим from
-            int fromX = Integer.parseInt(additional.get(index++));
-            Float fromY = Float.parseFloat(additional.get(index++));
-            int fromZ = Integer.parseInt(additional.get(index++));
-            this.from = new Location(fromX, fromY, fromZ);
+            if (additional.get(index).equals("null")) {
+                this.from = null;
+            }
+            else {
+                int fromX = Integer.parseInt(additional.get(index++));
+                Float fromY = Float.parseFloat(additional.get(index++));
+                int fromZ = Integer.parseInt(additional.get(index++));
+                this.from = new Location(fromX, fromY, fromZ);
+            }
 
             // Парсим to
-            int toX = Integer.parseInt(additional.get(index++));
-            Float toY = Float.parseFloat(additional.get(index++));
-            int toZ = Integer.parseInt(additional.get(index++));
-            this.to = new Location(toX, toY, toZ);
+            if (additional.get(index).equals("null")) {
+                this.to = null;
+            }
+            else {
+                int toX = Integer.parseInt(additional.get(index++));
+                Float toY = Float.parseFloat(additional.get(index++));
+                int toZ = Integer.parseInt(additional.get(index++));
+                this.to = new Location(toX, toY, toZ);
+            }
 
             // Парсим distance
-            this.distance = Float.parseFloat(additional.get(index));
+            if (additional.get(index).equals("null")) {
+                this.distance = null;
+            }
+            else {
+                this.distance = Float.parseFloat(additional.get(index));
+            }
 
             deque.addRoute(id, name, coordinates, creationDate, from, to, distance);
 

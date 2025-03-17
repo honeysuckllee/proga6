@@ -10,20 +10,13 @@ import org.labs.Service.TransparentScannerWrapper;
  * Команда читает команды из файла и передает их на выполнение в `CommandManager`.
  */
 public class ExecuteScript implements Command {
-    /**
-     * Объект класса `Scanner` для чтения команд из файла.
-     */
-    private TransparentScannerWrapper scanner;
-
 
     /**
      * Конструктор класса `ExecuteScript`.
      *
      * @param scanner Объект класса `Scanner` для чтения команд из файла.
      */
-    public ExecuteScript(TransparentScannerWrapper scanner) {
-        this.scanner = scanner;
-
+    public ExecuteScript() {
     }
 
     /**
@@ -31,20 +24,10 @@ public class ExecuteScript implements Command {
      * Читает команды из файла и передает их на выполнение в `CommandManager`.
      */
     @Override
-    public void execute() {
-        while (scanner.hasNextLine()) {
-            String scn = scanner.nextLine();
-            if (scn.equals("exit")){
-                break;
-            }
-
-        }
-        scanner.close();
-    }
+    public void execute() {}
 
     @Override
     public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
-        StringBuilder rez = new StringBuilder("Выполняется скрипт "+ args[0] +"\n");
-        return new CommandResult(rez.toString());
+        return new CommandResult("");
     }
 }

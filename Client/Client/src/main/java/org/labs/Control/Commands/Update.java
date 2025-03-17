@@ -10,12 +10,13 @@ import org.labs.Service.TransparentScannerWrapper;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static org.labs.Service.Utilites.*;
 
 public class Update implements Command {
-    private TransparentScannerWrapper scanner;
     private int id;
+
     private String name;
     /**
      * Координаты маршрута. Поле не может быть null.
@@ -38,11 +39,10 @@ public class Update implements Command {
      */
     private Float distance;
 
-public Update(TransparentScannerWrapper scanner) {
-        this.scanner = scanner;
-    }
+    public Update() {  }
+
     @Override
-    public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
+    public CommandResult execute(TransparentScannerWrapper scanner, String[] args, String... additionalInput) throws CommandException {
         if (args.length == 0){
             id = getValidInt(scanner, "Введите id:");
         }
@@ -81,15 +81,25 @@ public Update(TransparentScannerWrapper scanner) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         additional.add(creationDate.format(formatter));
 
-        additional.add(String.valueOf(from.getX()));
-        additional.add(String.valueOf(from.getY()));
-        additional.add(String.valueOf(from.getZ()));
-
-        additional.add(String.valueOf(to.getX()));
-        additional.add(String.valueOf(to.getY()));
-        additional.add(String.valueOf(to.getZ()));
-
-        additional.add(String.valueOf(distance));
+        if (from != null) {
+            additional.add(String.valueOf(from.getX()));
+            additional.add(String.valueOf(from.getY()));
+            additional.add(String.valueOf(from.getZ()));
+        } else {
+            additional.add("null");
+        }
+        if (to != null) {
+            additional.add(String.valueOf(to.getX()));
+            additional.add(String.valueOf(to.getY()));
+            additional.add(String.valueOf(to.getZ()));
+        } else {
+            additional.add("null");
+        }
+        if (distance != null) {
+            additional.add(String.valueOf(distance));
+        } else {
+            additional.add("null");
+        }
 
         String[] to = new String[additional.size()];
         additional.toArray(to);

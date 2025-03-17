@@ -1,3 +1,1 @@
-show
-execute_script script_script.txt
-info
+execute_script script.txt

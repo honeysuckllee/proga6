@@ -5,49 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="272972f4-4e7a-4d3e-b42c-bb775a73d30b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/ConfigReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/CommandInvoker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Add.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/AddIfMax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Clear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/ExecuteScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/FilterStartsWithName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Help.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/PrintFieldDescendingDistance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/PrintUniqueDistance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/RemoveById.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/RemoveFirst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/RemoveLower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Save.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Show.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/Update.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/base/CommandRequestContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/base/CommandResponseContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/base/CommandResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Control/Commands/exception/CommandException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Model/Coordinates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Model/Deque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Model/Location.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Model/Route.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/ServerApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Service/TransparentScannerWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Service/Utilites.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Service/XMLReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/labs/Service/XMLWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Client — копия.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/AddIfMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/AddIfMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/CommandWithNotParametr.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/CommandWithNotParametr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/FilterStartsWithName.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/FilterStartsWithName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/RemoveById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/RemoveLower.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/RemoveLower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Control/Commands/Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Model/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Model/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Service/TransparentScannerWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/java/org/labs/Service/TransparentScannerWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/resources/Scripts/script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/resources/Scripts/script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/Client/src/main/resources/Scripts/script_add.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/Client/src/main/resources/Scripts/script_add.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +42,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,7 +70,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Светлана/IdeaProjects/lab6/Server/Server/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -165,6 +145,7 @@
       <workItem from="1741855403182" duration="14370000" />
       <workItem from="1742040980449" duration="16000000" />
       <workItem from="1742129161532" duration="2601000" />
+      <workItem from="1742231325880" duration="3629000" />
     </task>
     <servers />
   </component>

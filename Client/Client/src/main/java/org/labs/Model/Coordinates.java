@@ -1,14 +1,12 @@
 package org.labs.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * Класс, представляющий координаты.
  * Используется для хранения географических координат (широта и долгота).
  */
-@Getter
-@Setter
+@Data
 public class Coordinates {
     /**
      * Широта (latitude).

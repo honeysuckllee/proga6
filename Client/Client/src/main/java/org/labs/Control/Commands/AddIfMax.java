@@ -42,15 +42,11 @@ public class AddIfMax implements Command {
      * Дистанция маршрута.
      */
     private Float distance;
-    /**
-     * Объект `Scanner` для чтения ввода пользователя.
-     */
-    private TransparentScannerWrapper scanner;
-    public AddIfMax(TransparentScannerWrapper scanner){
-        this.scanner = scanner;
-    }
+
+    public AddIfMax(){}
+
     @Override
-    public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
+    public CommandResult execute(TransparentScannerWrapper scanner, String[] args, String... additionalInput) throws CommandException {
         if (args.length == 0){
             id = getValidInt(scanner, "Введите id:");
         }
@@ -89,15 +85,25 @@ public class AddIfMax implements Command {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         additional.add(creationDate.format(formatter));
 
-        additional.add(String.valueOf(from.getX()));
-        additional.add(String.valueOf(from.getY()));
-        additional.add(String.valueOf(from.getZ()));
-
-        additional.add(String.valueOf(to.getX()));
-        additional.add(String.valueOf(to.getY()));
-        additional.add(String.valueOf(to.getZ()));
-
-        additional.add(String.valueOf(distance));
+        if (from != null) {
+            additional.add(String.valueOf(from.getX()));
+            additional.add(String.valueOf(from.getY()));
+            additional.add(String.valueOf(from.getZ()));
+        } else {
+            additional.add("null");
+        }
+        if (to != null) {
+            additional.add(String.valueOf(to.getX()));
+            additional.add(String.valueOf(to.getY()));
+            additional.add(String.valueOf(to.getZ()));
+        } else {
+            additional.add("null");
+        }
+        if (distance != null) {
+            additional.add(String.valueOf(distance));
+        } else {
+            additional.add("null");
+        }
 
         String[] to = new String[additional.size()];
         additional.toArray(to);

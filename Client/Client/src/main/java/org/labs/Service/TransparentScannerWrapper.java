@@ -1,5 +1,8 @@
 package org.labs.Service;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +12,11 @@ import java.util.Scanner;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
+@Getter
+@Setter
 public class TransparentScannerWrapper implements Closeable {
 
-    private Scanner scanner;
+    public Scanner scanner;
     public boolean enable_out;
 
     public TransparentScannerWrapper(Scanner scanner, boolean enable_out) {

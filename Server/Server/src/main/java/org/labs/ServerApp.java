@@ -1,9 +1,6 @@
 package org.labs;
 import java.io.*;
 import java.net.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.DatagramChannel;
-import java.time.LocalDateTime;
 import java.util.*;
 import lombok.Data;
 import org.labs.Control.Command;
@@ -34,7 +31,7 @@ public class ServerApp {
         deq = new Deque();
 
         commandHashMap.put("add", new Add(deq));
-        //commandHashMap.put("execute_script");
+        commandHashMap.put("execute_script", new ExecuteScript());
         commandHashMap.put("help", new Help());
         commandHashMap.put("show", new Show(deq.getDeque()));
         commandHashMap.put("info", new Info(deq));
@@ -54,23 +51,11 @@ public class ServerApp {
         System.out.println("Сервер начал работу.");
         logger.info("Сервер начал работу.");
 
-        InetAddress hostIP = InetAddress.getLocalHost();
-        InetSocketAddress address = new InetSocketAddress(hostIP, port);
-        DatagramChannel datagramChannel = DatagramChannel.open();
-        DatagramSocket datagramSocket = datagramChannel.socket();
-        datagramSocket.bind(address);
+        // Создаем серверный сокет и привязываем его к порту
+        ServerSocket serverSocket = new ServerSocket(port);
+        System.out.println("Сервер ожидает подключения на порту " + port);
 
-        ByteBuffer buffer = ByteBuffer.allocate(4096 * 4);
-
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            /*try {
-                commandHashMap.get("save").execute(new String[]{});
-                System.out.println("Collection saved. Server stopped.");
-            } catch (CommandException e) {
-                e.printStackTrace();
-            }*/
-        }));
-        // exit command thread
+        // Поток для обработки команд "exit"
         Thread exitThread = new Thread(() -> {
             while (true) {
                 try {
@@ -78,69 +63,72 @@ public class ServerApp {
                     if (line.equals("exit")) {
                         logger.info("Сервер завершил работу.");
                         System.exit(0);
-                    } else if (line.equals("save")) {
-                       /* try {
-                            commandHashMap.get("save").execute(new String[]{});
-                            System.out.println("Collection saved");
-                        } catch (CommandException e) {
-                            e.printStackTrace();
-                        }*/
-                    } else {
-                        System.err.println("Wrong command. You can use only 'exit' command to stop server or 'save' to save collection.");
                     }
                 } catch (NoSuchElementException e) {
-                    System.err.println("What are you doing? Stop that! Don't Ctrl+D my program, you are not good..." + "\n" +
-                            "Restart the program and be polite.");
+                    System.err.println("Не тыкай Ctrl+D\n");
                 }
             }
         });
         exitThread.start();
+
+        // Основной цикл обработки клиентских подключений
         while (true) {
-            SocketAddress from = datagramChannel.receive(buffer);
-            System.out.println(from);
-            buffer.flip();
-            System.out.print("\nData...: ");
-            byte[] bytes = new byte[buffer.remaining()];
-            buffer.get(bytes);
+            // Ожидаем подключения клиента
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Клиент подключен: " + clientSocket.getInetAddress());
 
-            ByteArrayInputStream bais = new ByteArrayInputStream(Base64.getMimeDecoder().decode(bytes));
-            ObjectInputStream objectInputStream = new ObjectInputStream(bais);
-            CommandRequestContainer inputContainer = (CommandRequestContainer) objectInputStream.readObject();
-
-            String command = inputContainer.getCommandName();
-            buffer.clear();
+            // Получаем входной и выходной потоки для обмена данными с клиентом
+            InputStream inputStream = clientSocket.getInputStream();
+            OutputStream outputStream = clientSocket.getOutputStream();
 
             try {
-                if (commandHashMap.containsKey(command)) {
-                    CommandResult result = commandHashMap.get(command).execute(inputContainer.getArgs(), inputContainer.getInput());
-                    System.out.println(result.getResult());
+                // Основной цикл обработки запросов от клиента
+                while (true) {
+                    // Чтение данных от клиента
+                    ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                    CommandRequestContainer inputContainer;
+                    try {
+                        inputContainer = (CommandRequestContainer) objectInputStream.readObject();
+                    } catch (EOFException e) {
+                        // Клиент отключился
+                        System.out.println("Клиент отключился: " + clientSocket.getInetAddress());
+                        break;
+                    }
 
-                    CommandResponseContainer commandResponseContainer = new CommandResponseContainer(result.getResult());
+                    String command = inputContainer.getCommandName();
 
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(baos);
-                    objectOutputStream.writeObject(commandResponseContainer);
+                    try {
+                        if (commandHashMap.containsKey(command)) {
+                            CommandResult result = commandHashMap.get(command).execute(inputContainer.getArgs(), inputContainer.getInput());
 
-                    datagramChannel.send(ByteBuffer.wrap(Base64.getMimeEncoder().encode(baos.toByteArray())), from);
-                } else {
-                    System.err.println("Команда " + command + " не найдена.");
-                    CommandResult result = new CommandResult("Команда " + command + " не найдена.");
-                    CommandResponseContainer commandResponseContainer = new CommandResponseContainer(result.getResult());
+                            CommandResponseContainer commandResponseContainer = new CommandResponseContainer(result.getResult());
 
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(baos);
-                    objectOutputStream.writeObject(commandResponseContainer);
+                            // Отправка результата клиенту
+                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                            objectOutputStream.writeObject(commandResponseContainer);
+                        } else {
+                            System.err.println("Команда " + command + " не найдена.");
+                            CommandResult result = new CommandResult("Команда " + command + " не найдена.");
+                            CommandResponseContainer commandResponseContainer = new CommandResponseContainer(result.getResult());
 
-                    datagramChannel.send(ByteBuffer.wrap(Base64.getMimeEncoder().encode(baos.toByteArray())), from);
+                            // Отправка результата клиенту
+                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                            objectOutputStream.writeObject(commandResponseContainer);
+                        }
+                    } catch (CommandException e) {
+                        CommandResponseContainer commandResponseContainer = new CommandResponseContainer(e.getMessage());
+
+                        // Отправка результата клиенту
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                        objectOutputStream.writeObject(commandResponseContainer);
+                    }
                 }
-            } catch (CommandException e) {
-                CommandResponseContainer commandResponseContainer = new CommandResponseContainer(e.getMessage());
-
-                ByteArrayOutputStream bass = new ByteArrayOutputStream();
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(bass);
-                objectOutputStream.writeObject(commandResponseContainer);
-
-                datagramChannel.send(ByteBuffer.wrap(Base64.getMimeEncoder().encode(bass.toByteArray())), from);
+            } catch (IOException e) {
+                System.err.println("Ошибка при работе с клиентом: " + e.getMessage());
+            } finally {
+                // Закрываем соединение с клиентом
+                clientSocket.close();
+                System.out.println("Соединение с клиентом закрыто.");
             }
         }
     }

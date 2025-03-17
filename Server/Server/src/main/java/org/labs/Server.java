@@ -2,7 +2,6 @@ package org.labs;
 
 import java.io.IOException;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 public class Server {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {

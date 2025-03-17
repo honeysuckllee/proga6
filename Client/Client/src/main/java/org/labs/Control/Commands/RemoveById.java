@@ -10,14 +10,11 @@ import java.util.ArrayList;
 import static org.labs.Service.Utilites.getValidInt;
 
 public class RemoveById implements Command {
-    private TransparentScannerWrapper scanner;
     private int id;
-    public RemoveById(TransparentScannerWrapper scanner) {
-        this.scanner = scanner;
-    }
+    public RemoveById() {   }
 
     @Override
-    public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
+    public CommandResult execute(TransparentScannerWrapper scanner, String[] args, String... additionalInput) throws CommandException {
         if (args.length == 0){
             id = getValidInt(scanner, "Введите id:");
         }

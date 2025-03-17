@@ -14,12 +14,10 @@ import static org.labs.Service.Utilites.getValidName;
 public class FilterStartsWithName implements Command {
     private Deque deque;
     private String name;
-    private TransparentScannerWrapper scanner;
-    public FilterStartsWithName(TransparentScannerWrapper scanner){
-        this.scanner = scanner;
-    }
+    public FilterStartsWithName(){}
+
     @Override
-    public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
+    public CommandResult execute(TransparentScannerWrapper scanner, String[] args, String... additionalInput) throws CommandException {
         if (args.length == 0) {
             name = getValidName(scanner);
         } else {

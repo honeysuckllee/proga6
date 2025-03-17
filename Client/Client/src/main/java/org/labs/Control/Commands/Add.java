@@ -45,10 +45,6 @@ public class Add implements Command {
      * Дистанция маршрута.
      */
     private Float distance;
-    /**
-     * Объект `Scanner` для чтения ввода пользователя.
-     */
-    private TransparentScannerWrapper scanner;
 
     /**
      * Конструктор класса `Add`.
@@ -56,9 +52,7 @@ public class Add implements Command {
      * @param scanner Объект `Scanner` для чтения ввода пользователя.
 
      */
-    public Add(TransparentScannerWrapper scanner){
-        this.scanner = scanner;
-    }
+    public Add(){}
 
     /**
      * Выполняет команду добавления нового элемента `Route` в коллекцию.
@@ -67,7 +61,7 @@ public class Add implements Command {
 
 
     @Override
-    public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
+    public CommandResult execute(TransparentScannerWrapper scanner, String[] args, String... additionalInput) throws CommandException {
         if (args.length == 0){
             name = getValidName(scanner);
         }
@@ -113,7 +107,7 @@ public class Add implements Command {
         } else {
             additional.add("null");
         }
-        if (to != null) {
+        if (distance != null) {
             additional.add(String.valueOf(distance));
         } else {
             additional.add("null");

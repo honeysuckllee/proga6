@@ -74,8 +74,8 @@ public class Add implements Command {
     public CommandResult execute(String[] args, String... additionalInput) throws CommandException {
         int index = 0;
         List<String> additional = Arrays.asList(additionalInput);
-        // id
-        int id = Integer.parseInt(additional.get(index++)); // id
+
+        int id = Integer.parseInt(additional.get(index++));
 
         // Парсим name
         this.name = additional.get(index++);
@@ -112,7 +112,7 @@ public class Add implements Command {
         }
 
         // Парсим distance
-        if (additional.get(index++).equals("null")) {
+        if (additional.get(index).equals("null")) {
             this.distance = null;
         }
         else {

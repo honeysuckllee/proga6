@@ -41,7 +41,6 @@ public class Help implements Command {
         commands.put("update id (element)", "обновить значение элемента коллекции по id");
         commands.put("remove_by_id id", "удалить элемент из коллекции по id");
         commands.put("clear", "очистить коллекцию");
-        commands.put("save", "сохранить коллекцию в файл");
         commands.put("execute_script", "исполнить скрипт из файла");
         commands.put("exit", "завершить программу");
         commands.put("remove_first", "удалить первый элемент из коллекции");
@@ -57,13 +56,7 @@ public class Help implements Command {
      * Использует словарь для получения команд и их описаний.
      */
     @Override
-    public void execute() {
-        System.out.println("Доступные команды:");
-        // Перебор всех команд в словаре и вывод их описания
-        for (Map.Entry<String, String> entry : commands.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-    }
+    public void execute() {}
 
     @Override
     public CommandResult execute(String[] args, String... additionalInput) throws CommandException {

@@ -2,6 +2,9 @@ package org.labs.Control;
 
 import org.labs.Control.Commands.base.CommandResult;
 import org.labs.Control.Commands.exception.CommandException;
+import org.labs.Service.TransparentScannerWrapper;
+
+import java.util.Scanner;
 
 /**
  * Интерфейс, представляющий команду.
@@ -13,6 +16,6 @@ public interface Command {
      * Выполняет команду.
      * Конкретная реализация этого метода зависит от класса, реализующего интерфейс.
      */
-    CommandResult execute(String[] args, String ... additionalInput) throws CommandException;
+    CommandResult execute(TransparentScannerWrapper scanner, String[] args, String ... additionalInput) throws CommandException;
 
 }

@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2025-03-17T18:41:20.588742400Z</date>
-  <millis>1742236880588</millis>
-  <nanos>742400</nanos>
+  <date>2025-03-17T13:28:11.086622200Z</date>
+  <millis>1742218091086</millis>
+  <nanos>622200</nanos>
   <sequence>0</sequence>
   <logger>Server</logger>
   <level>INFO</level>
@@ -13,3 +13,4 @@
   <thread>1</thread>
   <message>Сервер начал работу.</message>
 </record>
+</log>
